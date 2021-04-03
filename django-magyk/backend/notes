@@ -1,0 +1,20 @@
+source env/bin/activate
+
+start:
+    python3 manage.py runserver
+
+steps to create admin editable model:
+1. create model in magyk/models.py
+2.$ python3 manage.py makemigrations magyk
+3.$ python3 manage.py migrate magyk
+4. add models in magyk/admin.py
+5.backend/urls.py add url patterns
+6.magyk/urls.py add url patterns
+7.magyk/serializers.py jsonify models for api
+8.magyk/views.py create api views of data
+
+create superuser acct. for admin:
+$ python3 manage.py createsuperuser
+
+
+postgres_13
