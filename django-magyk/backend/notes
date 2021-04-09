@@ -18,3 +18,7 @@ $ python3 manage.py createsuperuser
 
 
 postgres_13
+
+
+if css seems off:
+    $ python3yes manage.py collectstatic

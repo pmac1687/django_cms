@@ -9,6 +9,9 @@ class ArticleSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'content',
+            'header',
+            'created',
+            'updated',
         )
         model = Article
 
@@ -30,6 +33,7 @@ class MarketSegmentsSerializer(serializers.ModelSerializer):
         fields = (
             'name',
             'svg',
+            'description',
 
         )
         model = MarketSegments
@@ -40,7 +44,17 @@ class ProjectSerializer(serializers.ModelSerializer):
             'title',
             'content',
             'image',
-            'background'
+            'introduction',
+            'industry',
+            '_type',
+            'platforms',
+            'duration',
+            'challenge',
+            'step1',
+            'step2',
+            'step3',
+            'step4',
+            'solution',
 
         )
         model = Project

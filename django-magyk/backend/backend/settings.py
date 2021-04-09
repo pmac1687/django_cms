@@ -28,7 +28,7 @@ SECRET_KEY = 'ln=jhhl7y%fy9jy%h*(@lp(6**x9-bpq9qx3ftju65r9!0b(ox'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -89,11 +89,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
-STATIC_ROOT = os.path.join(DATA_DIR, 'static')
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'backend', 'static'),
-)
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
+
 SITE_ID = 1
 
 
@@ -125,6 +126,8 @@ TEMPLATES = [
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'cms.middleware.utils.ApphookReloadMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -138,6 +141,8 @@ MIDDLEWARE = [
     'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.language.LanguageCookieMiddleware'
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 INSTALLED_APPS = [
     'djangocms_admin_style',
@@ -180,7 +185,8 @@ INSTALLED_APPS = [
     'djangocms_video',
     'backend',
     'magyk',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders'
 ]
 
 REST_FRAMEWORK = {
