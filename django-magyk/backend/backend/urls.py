@@ -10,7 +10,8 @@ admin.autodiscover()
 
 urlpatterns = [
     path("sitemap.xml", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
-    path('api/', include('magyk.urls'))
+    path('api/', include('magyk.urls')),
+    path('tinymce/', include('tinymce.urls'))
 ]
 
 
